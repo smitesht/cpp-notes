@@ -10,7 +10,7 @@ It performs an appropriate disposal when the smart pointer goes out of scope.
 - A non-null unique_ptr destroys its resource. Internally, it calls delete to the raw pointer.
 - By default, resource destructor takes place via delete, but custom deleter can also be used when needing special deletion.
 
-```
+```c++
 #include <iostream>
 #include <memory>
 #include <string>
