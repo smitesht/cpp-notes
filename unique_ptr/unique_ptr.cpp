@@ -1,12 +1,14 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <utility>
 
 
 using std::unique_ptr;
 using std::make_unique;
 using std::cout;
 using std::string;
+
 
 class Foo
 {
@@ -26,6 +28,24 @@ auto customDeleter = [](Foo *pf) {
     delete pf;
 };
 
+class Base
+{
+    public:
+        virtual ~Base()
+        {
+            std::cout<<"~Base() dtor..."<<std::endl;
+        }
+};
+
+class Derived : public Base
+{
+    public:
+        virtual ~Derived()
+        {
+            std::cout<<"~Derived dtor..."<<std::endl;
+        }
+};
+
 
 int main()
 {
@@ -42,5 +62,10 @@ int main()
 
     unique_ptr<Foo,decltype(customDeleter)> mFooEx(new Foo(4,"Hello"),customDeleter);
     mFooEx.reset();
+
+
+    unique_ptr<Derived> pDerived = std::make_unique<Derived>();
+    unique_ptr<Base> pBase = std::move(pDerived);
+
     return 0;
 }
