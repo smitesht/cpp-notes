@@ -15,6 +15,14 @@ bool LengthIsLessThanSeven(const string& str)
     return str.length() < 7;
 }
 
+int gLength;
+
+bool LengthIsLessThan(const string& str)
+{
+    return str.length() < gLength;
+}
+
+
 int main()
 {
     vector<string> names = {"Jack", "Benjamin", "Leo", "Oliver", "Anderson", "Amelia", "Ava"};
