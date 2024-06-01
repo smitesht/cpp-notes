@@ -302,7 +302,7 @@ auto hnGreet = [hindiGreet](string name){
 };
 
 auto frGreet = [frenchGreet](string name){
-    return enGgreet + " " + name + "!";
+    return frenchGreet + " " + name + "!";
 };
 
 cout<<enGreet("Jhone")<<endl;

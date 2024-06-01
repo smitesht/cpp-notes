@@ -149,13 +149,38 @@ int main()
 
 
     // Lambda Expression
-    string enGgreet = "Hello";
+    /*string enGgreet = "Hello";
     auto greet = [enGgreet](string name){
         return enGgreet + " " + name + "!";
     };
 
     cout<<greet("Jhone")<<endl;
-    cout<<greet("Robert")<<endl;
+    cout<<greet("Robert")<<endl;*/
+
+    // lambda expression
+    string enGgreet = "Hello";
+    string hindiGreet = "Namaste";
+    string frenchGreet = "Bonjour";
+
+    auto enGreet = [enGgreet](string name){
+        return enGgreet + " " + name + "!";
+    };
+
+    auto hnGreet = [hindiGreet](string name){
+        return hindiGreet + " " + name + "!";
+    };
+
+    auto frGreet = [frenchGreet](string name){
+        return frenchGreet + " " + name + "!";
+    };
+
+    cout<<enGreet("Jhone")<<endl;
+    cout<<enGreet("Robert")<<endl;
+
+    cout<<hnGreet("Manish")<<endl;
+    cout<<hnGreet("Narendra")<<endl;
+
+    cout<<frGreet("Amelia")<<endl;
 
     return 0;
 }
