@@ -81,6 +81,21 @@ class CLickHandler{
         }
 };
 
+
+class Greet{
+
+private:
+    string greet;
+public:
+    //ctor
+    Greet(string _greet):greet(_greet){}
+
+    string operator()(string name){
+        return greet + " " + name + "!";
+    }        
+};
+
+
 int main()
 {
     vector<string> names = {"Jack", "Benjamin", "Leo", "Oliver", "Anderson", "Amelia", "Ava"};
@@ -119,6 +134,28 @@ int main()
     // pass functor to setClickHandler
     button.setClickHandler(CLickHandler());
     button.click();
+
+    
+    /*Greet engGreet("Helllo");  // create Greet object 
+    cout<<engGreet("Jhone")<<endl;  // call functor (or operator())
+    cout<<engGreet("Robert")<<endl;
+
+    Greet hindiGreet("Namaste");
+    cout<<hindiGreet("Manish")<<endl;
+    cout<<hindiGreet("Narendra")<<endl;
+
+    Greet frenchGreet("Bonjour");
+    cout<<frenchGreet("Amelia")<<endl;*/
+
+
+    // Lambda Expression
+    string enGgreet = "Hello";
+    auto greet = [enGgreet](string name){
+        return enGgreet + " " + name + "!";
+    };
+
+    cout<<greet("Jhone")<<endl;
+    cout<<greet("Robert")<<endl;
 
     return 0;
 }

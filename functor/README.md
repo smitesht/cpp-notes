@@ -196,3 +196,121 @@ int main()
 }
 
 ```
+
+## Functors and Lambda Expression
+
+In C++, functors and lambdas are both ways to create callable objects, but they have different characteristics and use cases.
+
+### Functor:
+
+A functor is an instance of a class or struct that has an overloaded **_operator()_**. It can store state and provide callable behavior.
+
+```cpp
+class Greet{
+
+private:
+    string greet;
+public:
+    //ctor
+    Greet(string _greet):greet(_greet){}
+
+    string operator()(string name){
+        return greet + " " + name + "!";
+    }
+};
+
+int main()
+{
+    Greet engGreet("Helllo");  // create Greet object
+    cout<<engGreet("Jhone")<<endl;  // call functor (or operator())
+    cout<<engGreet("Robert")<<endl;
+
+
+    return 0;
+}
+
+OUTPUT:
+============
+Helllo Jhone!
+Helllo Robert!
+
+```
+
+### Lambda:
+
+A lambda is an anonymous function object created using the lambda syntax introduced in C++11. It can capture variables from its enclosing scope and provide callable behavior without the need for a named class or struct.
+
+```cpp
+
+    string enGgreet = "Hello";
+    // Lambda expression
+    auto greet = [enGgreet](string name){
+        return enGgreet + " " + name + "!";
+    };
+
+    cout<<greet("Jhone")<<endl;
+    cout<<greet("Robert")<<endl;
+```
+
+#### Storing state
+
+Functors store state in its member variable. The state is defined at the time of the functor's creation.
+In this example, greet store the state, and every time when we create instantiate functor, we have to provide the state.
+
+```cpp
+class Greet{
+
+private:
+    // store state
+    string greet;
+public:
+    //ctor
+    Greet(string _greet):greet(_greet){}
+
+    string operator()(string name){
+        return greet + " " + name + "!";
+    }
+};
+
+Greet engGreet("Helllo");  // create Greet object
+cout<<engGreet("Jhone")<<endl;  // call functor (or operator())
+cout<<engGreet("Robert")<<endl;
+
+Greet hindiGreet("Namaste");
+cout<<hindiGreet("Manish")<<endl;
+cout<<hindiGreet("Narendra")<<endl;
+
+Greet frenchGreet("Bonjour");
+cout<<frenchGreet("Amelia")<<endl;
+
+```
+
+While lambda captures variable from the surrounding scope.
+
+```cpp
+// lambda capture variable outside
+string enGgreet = "Hello";
+string hindiGreet = "Namaste";
+string frenchGreet = "Bonjour";
+
+auto enGreet = [enGgreet](string name){
+    return enGgreet + " " + name + "!";
+};
+
+auto hnGreet = [hindiGreet](string name){
+    return hindiGreet + " " + name + "!";
+};
+
+auto frGreet = [frenchGreet](string name){
+    return enGgreet + " " + name + "!";
+};
+
+cout<<enGreet("Jhone")<<endl;
+cout<<enGreet("Robert")<<endl;
+
+cout<<hnGreet("Manish")<<endl;
+cout<<hnGreet("Narendra")<<endl;
+
+cout<<frGreet("Amelia")<<endl;
+
+```
