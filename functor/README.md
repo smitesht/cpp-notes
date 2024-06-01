@@ -314,3 +314,17 @@ cout<<hnGreet("Narendra")<<endl;
 cout<<frGreet("Amelia")<<endl;
 
 ```
+
+#### Advantages and Disadvantages
+
+Functors:
+
+- **Advantages**: Functors can be more expressive, reusable, and maintainable for complex logic. State management is clear and encapsulated.
+
+- **Disadvantages**: Require more boilerplate code to define the class or struct
+
+Lambda:
+
+- **Advantages**: Lambda is concise, inline and easy to use for simple operations. Supports capturing variable from the enclosing scope.
+
+- **Disadvantages**: Less reusable if the logic needs to be used in multiple places. Captures can lead to bugs if not managed carefully.
