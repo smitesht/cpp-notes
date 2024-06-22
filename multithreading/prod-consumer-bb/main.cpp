@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const int BUFFER_SIZE = 10; // Size of the bounded buffer
+const int BUFFER_SIZE = 3; // Size of the bounded buffer
 queue<int> sharedQ; // Bounded buffer
 mutex mtxPQ; // mutex for synchronization
 condition_variable cv; // for notification
@@ -21,10 +21,10 @@ void threadProducer(int numOfItems)
     {
         // lock the mutex
         unique_lock<mutex> lock(mtxPQ);
-        // if the queue size is more than 3, 
+        // if the queue size is more than BUFFER_SIZE = 3, 
         //  it will wait for consumption
         cv.wait(lock, [] {
-            return sharedQ.size() < 3;
+            return sharedQ.size() < BUFFER_SIZE;
             });
 
         // push the item in queue
@@ -68,7 +68,7 @@ void threadConsumer(int id)
         {
             int item = sharedQ.front();
             sharedQ.pop();
-            cout << "Consumed Item:" << id << " " << item << endl;
+            cout << "Consumer :" << id << "  consume: " << item << endl;
         }
         else if(isEndOfProduced)
         {
