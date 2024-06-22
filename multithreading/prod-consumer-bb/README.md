@@ -1,6 +1,6 @@
 # Producer Consumer Problem With Bounded Buffer
 
-Producer Consumer problem is a classical example of a multithreading problem where proeucer produces data and placing it into a shared buffer, and consumers are taking data from the buffer for processing. When the buffer is full, producer must wait and when the buffer is empty, consumer must wait. The solution contains proper synchronization to ensure thread safety and avoid race conditions.
+The Producer-Consumer problem is a classic example of a multithreading problem where the producer produces data and places it into a shared buffer, while the consumer takes data from the buffer for processing. When the buffer is full, the producer must wait and when the buffer is empty, the consumer must wait. The solution contains proper synchronization to ensure thread safety and avoid race conditions.
 
 The code contains one producer and two consumers.
 
