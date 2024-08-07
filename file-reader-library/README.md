@@ -119,6 +119,9 @@ How to build main:
 
   **command_prompt> make all**
 
+- Add the library location to the **LD_LIBRARY_PATH** environment variable
+**export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH**
+
 - Display Output: 
   **command_prompt> ./main**
 
